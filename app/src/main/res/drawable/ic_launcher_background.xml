@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:andriod="http://schemas.android.com/apk/res/android">
+
+
+    <item>
+        <bitmap
+            andriod:gravity="center"
+            andriod:src="@drawable/icon" />
+    </item>
+
+</layer-list>
