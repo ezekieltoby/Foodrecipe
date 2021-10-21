@@ -1,33 +1,25 @@
 package com.example.moreseactivitiesintents;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ViewAll extends AppCompatActivity {
+public class Breakfast extends AppCompatActivity {
     Connection connect;
     String ConnectionResult = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewall);
-
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
-
+        setContentView(R.layout.breakfast);
     }
-
     public void GetTextFromSQL(View v) {
         TextView tx1 = (TextView) findViewById(R.id.textView);
         TextView tx2 = (TextView) findViewById(R.id.textView2);
@@ -37,10 +29,10 @@ public class ViewAll extends AppCompatActivity {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             connect = connectionHelper.connectionclass();
             if(connect!=null) {
-                String query = "Select * from BigStomach";
+                String query = "SELECT * FROM BigStomach WHERE Category ='Breakfast'";
                 Statement st= connect.createStatement();
                 ResultSet rs= st.executeQuery(query);
-
+                Log.v("DB", rs.toString());
                 while(rs.next())
                 {
                     tx1.setText(rs.getString(1));
@@ -49,14 +41,14 @@ public class ViewAll extends AppCompatActivity {
                     tx4.setText(rs.getString(4));
                 }
             }
-        else
+            else
             {
                 ConnectionResult="Check Connection";
             }
         } catch (Exception ex)
         {
-            Log.e("error database file ", ex.getMessage());
+            Log.e("error", ex.getMessage());
         }
 
     }
-}
+    }
