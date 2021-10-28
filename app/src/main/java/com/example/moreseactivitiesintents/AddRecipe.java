@@ -72,22 +72,24 @@ public class AddRecipe extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try{
                 com.example.moreseactivitiesintents.ConnectionHelper connectionHelper = new com.example.moreseactivitiesintents.ConnectionHelper();
-                Log.i("checks ", "before connect");
+                Log.i("inserts ", "before connect");
                 connect = connectionHelper.connectionclass();
-                Log.d("checks ", "after connect");
+                Log.d("inserts ", "after connect");
 
-                if(connect!=null) {
+                if(connect == null) {
                     z = "Check Your Internet Connection";
                 }
                 else{
                     String sql = "INSERT INTO BigStomach (FoodName, CookingTime, Category, Recipe) VALUES ('"+name.getText()+"','"+time.getText()+"','"+category.getText()+"','"+ingredients.getText()+"')";
-                    stmt = con.createStatement();
+                    stmt = connect.createStatement();
                     stmt.executeUpdate(sql);
+                    Log.i("checks", "doInBackground: " + sql);
                 }
 
             }catch (Exception e){
                 isSuccess = false;
                 z = e.getMessage();
+                Log.e("checks", "doInBackground: " + z);
             }
 
             return z;
