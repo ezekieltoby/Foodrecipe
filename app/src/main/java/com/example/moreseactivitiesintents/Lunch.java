@@ -46,7 +46,7 @@ public class Lunch extends AppCompatActivity {
             }
         } catch (Exception ex)
         {
-            Log.e("error", ex.getMessage());
+            Log.e("error database file lunch class", ex.getMessage());
         }
 
     }

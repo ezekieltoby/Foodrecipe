@@ -47,7 +47,7 @@ public class Dessert extends AppCompatActivity {
                 }
             } catch (Exception ex)
             {
-                Log.e("error", ex.getMessage());
+                Log.e("error database file dessert class ", ex.getMessage());
             }
 
         }

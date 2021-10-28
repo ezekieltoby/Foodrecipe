@@ -33,6 +33,7 @@ public class Breakfast extends AppCompatActivity {
                 Statement st= connect.createStatement();
                 ResultSet rs= st.executeQuery(query);
                 Log.v("DB", rs.toString());
+
                 while(rs.next())
                 {
                     tx1.setText(rs.getString(1));
@@ -47,7 +48,7 @@ public class Breakfast extends AppCompatActivity {
             }
         } catch (Exception ex)
         {
-            Log.e("error", ex.getMessage());
+            Log.e("error database file breakfast class", ex.getMessage());
         }
 
     }
