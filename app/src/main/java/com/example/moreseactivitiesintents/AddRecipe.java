@@ -55,13 +55,13 @@ public class AddRecipe extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            status.setText("sending dat to database");
+            status.setText("sending data to database");
 
         }
 
         @Override
         protected void onPostExecute(String s) {
-            status.setText("Registration is successful");
+            status.setText("Submission is successful");
             name.setText("");
             time.setText("");
             category.setText("");
